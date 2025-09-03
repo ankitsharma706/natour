@@ -46,7 +46,7 @@ if (userDataForm)
     if (document.getElementById('photo').files[0]) {
       form.append('photo', document.getElementById('photo').files[0]);
     }
-    console.log(form);
+    // console.log(form);
     updateSettings(form, 'data');
   });
 if (userPasswordForm)
