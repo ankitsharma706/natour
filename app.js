@@ -7,7 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
-const compression=require('compression')
+const compression = require('compression');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
@@ -35,21 +35,23 @@ app.use(
           "'self'",
           'https://unpkg.com',
           'https://cdn.jsdelivr.net',
-          'https://js.stripe.com'   // ✅ Add Stripe here
+          'https://js.stripe.com', // ✅ Add Stripe here
         ],
         styleSrc: [
           "'self'",
           "'unsafe-inline'",
           'https://unpkg.com',
-          'https://fonts.googleapis.com'
+          'https://fonts.googleapis.com',
         ],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-        frameSrc: ["'self'", 'https://js.stripe.com'],  // ✅ allow Stripe checkout
+        frameSrc: ["'self'", 'https://js.stripe.com'], // ✅ allow Stripe checkout
         connectSrc: [
           "'self'",
           'https://cdn.jsdelivr.net',
           'https://js.stripe.com',
-          ...(process.env.NODE_ENV === 'development' ? ['ws://127.0.0.1:*'] : [])
+          ...(process.env.NODE_ENV === 'development'
+            ? ['ws://127.0.0.1:*']
+            : []),
         ],
         imgSrc: [
           "'self'",
@@ -57,13 +59,12 @@ app.use(
           'https://res.cloudinary.com',
           'https://a.tile.openstreetmap.org',
           'https://b.tile.openstreetmap.org',
-          'https://c.tile.openstreetmap.org'
-        ]
-      }
-    }
-  })
+          'https://c.tile.openstreetmap.org',
+        ],
+      },
+    },
+  }),
 );
-git 
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
@@ -104,7 +105,7 @@ app.use(
   }),
 );
 
-app.use(compression())
+app.use(compression());
 // Test middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
